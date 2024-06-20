@@ -10,7 +10,26 @@
         body {
             padding: 70px;
         }
+
+        .custom-file-input {
+  display: none;
+}
+
+.custom-file-label {
+  display: inline-block;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border-radius: 0.25rem;
+}
+
+#fileName {
+  margin-top: 0.5em;
+}
+
     </style>
+    
   </head>
   <body>
 
@@ -90,11 +109,35 @@
   </select>
 </div>
 
+<!-- <div class="form-file">
+  <input type="file"name="" id="" class="form-file-input" id="customFile">
+  <label for="customFile" class="form-file-label">
+    <span class="form-file-text">Dosya Seç</span>
+    <span class="form-file-button">Dosya Ara</span>
+  </label>
+</div> -->
+
+<div class="mb-3">
+  <label for="customFile" class="form-label">Upload your file</label>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="customFile" onchange="updateFileName(this)">
+    <label class="custom-file-label" for="customFile" id="customFileLabel">Bir dosya seçiniz</label>
+  </div>
+  <div id="fileName">Dosya seçilmedi</div>
+</div>
+
+
+
 
 
 
    
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+      function updateFileName(input) {
+    var fileName = input.files[0] ? input.files[0].name : 'No file chosen';
+    document.getElementById('fileName').textContent = fileName;
+  }
+    </script>
   </body>
 </html>
